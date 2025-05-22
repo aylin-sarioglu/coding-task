@@ -116,9 +116,14 @@ public class LocalTextAnalyzerTest {
         String input = "!%$§";
         TextAnalyzerResponseDTO result = analyzer.analyze(input, AnalyzerMode.VOWELS);
 
+        Map<Character, Integer> vowels = result.getReport();
         assertEquals(AnalyzerMode.VOWELS, result.getAnalyzerMode());
         assertEquals(input, result.getInputText());
-        assertTrue(result.getReport().isEmpty());
+        assertEquals(0, vowels.get('E'));
+        assertEquals(0, vowels.get('O'));
+        assertEquals(0, vowels.get('A'));
+        assertEquals(0, vowels.get('I'));
+        assertEquals(0, vowels.get('U'));
 
     }
 

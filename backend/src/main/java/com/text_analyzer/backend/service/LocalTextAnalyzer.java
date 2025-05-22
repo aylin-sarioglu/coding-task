@@ -1,14 +1,15 @@
 package com.text_analyzer.backend.service;
 
 import java.util.HashMap;
-import java.util.Map;
+import java.util.Set;
 import org.springframework.stereotype.Component;
-
 import com.text_analyzer.backend.dto.AnalyzerMode;
 import com.text_analyzer.backend.dto.TextAnalyzerResponseDTO;
 
 @Component
 public class LocalTextAnalyzer {
+    private static final Set<Character> VOWEL_SET = Set.of('A', 'E', 'I', 'O', 'U');
+
     public TextAnalyzerResponseDTO analyze(String input, AnalyzerMode type) {
         switch (type) {
             case AnalyzerMode.VOWELS:
@@ -20,41 +21,24 @@ public class LocalTextAnalyzer {
         }
     }
 
-    private TextAnalyzerResponseDTO analyzeTextForVowels(String input) {
-        int numA = 0;
-        int numE = 0;
-        int numI = 0;
-        int numO = 0;
-        int numU = 0;
-        char[] chars = input.toCharArray();
-        for (int i = 0; i < chars.length; i++) {
-            System.out.println(chars[i]);
-            if (chars[i] == 'a' || chars[i] == 'A')
-                numA++;
-            if (chars[i] == 'e' || chars[i] == 'E')
-                numE++;
-            if (chars[i] == 'i' || chars[i] == 'I')
-                numI++;
-            if (chars[i] == 'o' || chars[i] == 'O')
-                numO++;
-            if (chars[i] == 'u' || chars[i] == 'U')
-                numU++;
+    private static TextAnalyzerResponseDTO analyzeTextForVowels(String input) {
+        if (input == null || input.isBlank()) {
+            return new TextAnalyzerResponseDTO(input, AnalyzerMode.VOWELS, new HashMap<>());
         }
-        System.out.println("Letter 'A' appears " + numA + " times");
-        System.out.println("Letter 'E' appears " + numE + " times");
-        System.out.println("Letter 'I' appears " + numI + " times");
-        System.out.println("Letter 'O' appears " + numO + " times");
-        System.out.println("Letter 'U' appears " + numU + " times");
 
-        Map<Character, Integer> vowelCount = Map.of(
-                'A', numA,
-                'E', numE,
-                'I', numI,
-                'O', numO,
-                'U', numU);
+        HashMap<Character, Integer> vowelsCountMap = new HashMap<>();
 
-        TextAnalyzerResponseDTO responseDTO = new TextAnalyzerResponseDTO(input, AnalyzerMode.VOWELS, vowelCount);
-        return responseDTO;
+        for (char vowel : VOWEL_SET) {
+            vowelsCountMap.put(vowel, 0);
+        }
+
+        for (char inputChar : input.toUpperCase().toCharArray()) {
+            if (isVowel(inputChar)) {
+                vowelsCountMap.computeIfPresent(inputChar, (vowel, count) -> ++count);
+            }
+        }
+
+        return new TextAnalyzerResponseDTO(input, AnalyzerMode.VOWELS, vowelsCountMap);
 
     }
 
@@ -90,4 +74,11 @@ public class LocalTextAnalyzer {
         return responseDTO;
     }
 
+    private static boolean isVowel(char inputChar) {
+        return VOWEL_SET.contains(Character.toUpperCase(inputChar));
+    }
+
+    public static void main(String[] args) {
+        analyzeTextForVowels("!%$");
+    }
 }
