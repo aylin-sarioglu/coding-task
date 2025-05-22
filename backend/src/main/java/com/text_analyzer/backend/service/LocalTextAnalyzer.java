@@ -2,9 +2,7 @@ package com.text_analyzer.backend.service;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import org.springframework.stereotype.Component;
-
 import com.text_analyzer.backend.dto.AnalyzerType;
 import com.text_analyzer.backend.dto.TextAnalyzerResponseDTO;
 
@@ -54,7 +52,7 @@ public class LocalTextAnalyzer {
                 'O', numO,
                 'U', numU);
 
-        TextAnalyzerResponseDTO responseDTO = new TextAnalyzerResponseDTO(vowelCount, null);
+        TextAnalyzerResponseDTO responseDTO = new TextAnalyzerResponseDTO(input, AnalyzerType.VOWELS, vowelCount);
         return responseDTO;
 
     }
@@ -87,7 +85,7 @@ public class LocalTextAnalyzer {
             System.out.println("Letter '" + entrySet.getKey() + "' appears " + entrySet.getValue() + " times");
         });
 
-        TextAnalyzerResponseDTO responseDTO = new TextAnalyzerResponseDTO(null, consonants);
+        TextAnalyzerResponseDTO responseDTO = new TextAnalyzerResponseDTO(input, AnalyzerType.CONSONANTS, consonants);
         return responseDTO;
     }
 

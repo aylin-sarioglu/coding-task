@@ -3,29 +3,38 @@ package com.text_analyzer.backend.dto;
 import java.util.Map;
 
 public class TextAnalyzerResponseDTO {
-    private Map<Character, Integer> vowelCount;
-    private Map<Character, Integer> consonantsCount;
+    private String inputText;
+    private AnalyzerType analyzerType;
+    private Map<Character, Integer> report;
 
-    public TextAnalyzerResponseDTO(Map<Character, Integer> vowelCount,
-            Map<Character, Integer> consonantsCount) {
-        this.vowelCount = vowelCount;
-        this.consonantsCount = consonantsCount;
+    public TextAnalyzerResponseDTO(String inputText, AnalyzerType analyzerType, Map<Character, Integer> report) {
+        this.inputText = inputText;
+        this.analyzerType = analyzerType;
+        this.report = report;
     }
 
-    public Map<Character, Integer> getVowelCount() {
-        return vowelCount;
+    public String getInputText() {
+        return inputText;
     }
 
-    public void setVowelCount(Map<Character, Integer> vowelCount) {
-        this.vowelCount = vowelCount;
+    public void setInputText(String inputText) {
+        this.inputText = inputText;
     }
 
-    public Map<Character, Integer> getConsonantsCount() {
-        return consonantsCount;
+    public AnalyzerType getAnalyzerType() {
+        return analyzerType;
     }
 
-    public void setConsonantsCount(Map<Character, Integer> consonantsCount) {
-        this.consonantsCount = consonantsCount;
+    public void setAnalyzerType(AnalyzerType analyzerType) {
+        this.analyzerType = analyzerType;
+    }
+
+    public Map<Character, Integer> getReport() {
+        return report;
+    }
+
+    public void setReport(Map<Character, Integer> report) {
+        this.report = report;
     }
 
 }

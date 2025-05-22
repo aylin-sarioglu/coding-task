@@ -17,15 +17,12 @@ public class TextAnalyzerService {
 
     public TextAnalyzerResponseDTO analyzeOffline(String inputText, AnalyzerType type) {
         // TODO: call analyze offline method here
-        Map<Character, Integer> exampleVowelCount = Map.of(
+        Map<Character, Integer> exampleReport = Map.of(
                 'a', 3,
                 'e', 5);
-        Map<Character, Integer> exampleConsonantsCount = Map.of(
-                'h', 3,
-                'l', 5);
 
         // return localAnalyzer.analyze(text, type);
-        TextAnalyzerResponseDTO responseDTO = new TextAnalyzerResponseDTO(exampleVowelCount, exampleConsonantsCount);
+        TextAnalyzerResponseDTO responseDTO = new TextAnalyzerResponseDTO(inputText, type, exampleReport);
         return responseDTO;
 
     }
@@ -33,14 +30,11 @@ public class TextAnalyzerService {
     public TextAnalyzerResponseDTO analyzeOnline(String inputText, AnalyzerType type) {
         // TODO: call analyze online method / REST CALL
 
-        Map<Character, Integer> exampleVowelCount = Map.of(
-                'a', 3,
-                'e', 5);
-        Map<Character, Integer> exampleConsonantsCount = Map.of(
+        Map<Character, Integer> exampleReport = Map.of(
                 'h', 3,
                 'l', 5);
 
-        TextAnalyzerResponseDTO responseDTO = new TextAnalyzerResponseDTO(exampleVowelCount, exampleConsonantsCount);
+        TextAnalyzerResponseDTO responseDTO = new TextAnalyzerResponseDTO(inputText, type, exampleReport);
         return responseDTO;
     }
 
