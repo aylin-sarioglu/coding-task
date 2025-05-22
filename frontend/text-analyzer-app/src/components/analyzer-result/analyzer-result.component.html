@@ -1,16 +1,18 @@
 <main class="main">
-  <h2 *ngIf="result" class="list-title">Analyzer Results</h2>
+  <h2 class="list-title">Analyzer Results</h2>
 
-  <mat-list role="list" class="analyzer-result-list">
-    <mat-list-item>
-      <span matListItemTitle class="list-item-title"
-        >Analyzed Text {{ result?.inputText }} for
-        {{ result?.analyzerMode }}</span
-      >
-      <span matListItemLine *ngFor="let entry of result?.report | keyvalue">
-        Letter {{ entry.key }} appears {{ entry.value }} times
-      </span>
-    </mat-list-item>
-    <mat-divider></mat-divider>
+  <mat-list *ngIf="results" role="list" class="analyzer-result-list">
+    <ng-container *ngFor="let result of results">
+      <mat-list-item>
+        <span matListItemTitle class="list-item-title"
+          >Analyzed Text {{ result.inputText }} for
+          {{ result.analyzerMode }}</span
+        >
+        <span matListItemLine *ngFor="let entry of result.report | keyvalue">
+          Letter {{ entry.key }} appears {{ entry.value }} times
+        </span>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </ng-container>
   </mat-list>
 </main>

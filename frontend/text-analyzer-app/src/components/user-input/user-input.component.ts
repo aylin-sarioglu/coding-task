@@ -35,7 +35,7 @@ import { OnlineTextAnalyzer } from '../../services/online-text-analyzer';
 })
 export class UserInputComponent {
   inputText: string = '';
-  selectedValue: 'VOWELS' | 'CONSONANTS' = 'VOWELS';
+  selectedValue: AnalyzerMode = 'VOWELS';
   isOnline: boolean = false;
 
   constructor(private readonly textAnalyzer: OnlineTextAnalyzer) {}

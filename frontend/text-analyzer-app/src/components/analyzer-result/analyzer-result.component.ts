@@ -14,13 +14,15 @@ import { CommonModule } from '@angular/common';
   styleUrl: './analyzer-result.component.css',
 })
 export class AnalyzerResultComponent {
-  result: TextAnalyzerResponse | null = null;
+  results: TextAnalyzerResponse[] | null = [];
 
   constructor(private readonly textAnalyzer: OnlineTextAnalyzer) {}
 
   ngOnInit(): void {
     this.textAnalyzer.result$.subscribe((response) => {
-      this.result = response;
+      if (response) {
+        this.results?.unshift(response);
+      }
     });
   }
 }
