@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { AnalysisResultComponent } from '../components/analysis-result/analysis-result.component';
+import { UserInputComponent } from '../components/user-input/user-input.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [AnalysisResultComponent, UserInputComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
