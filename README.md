@@ -126,15 +126,14 @@ backend/
 │
 ├── controller/         # REST Controller
 ├── dto/                # Request/Response DTOs & Enums
-├── analyzer/           # Text analysis logic
-├── service/            # Delegates offline/online calls
+├── service/            # Delegates offline/online calls, Text analysis logic
 └── tests/              # Unit tests
 
 frontend/
 │
 ├── components/         # UI components
 ├── services/           # API integration
-├── models/             # Request/response interfaces
+├── environment/        # Set config values
 └── app.module.ts
 ```
 
