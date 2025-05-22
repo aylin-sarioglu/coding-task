@@ -8,31 +8,37 @@
     class="analyzer-result-list"
   >
     <ng-container *ngFor="let result of results()">
-      <mat-list-item aria-label="Analysis result item">
-        <!-- Input Text-->
-        <span matListItemTitle class="list-item-title" aria-label="Input text"
-          >Input: <span class="user-input">{{ result.inputText }}</span>
-        </span>
+      <div aria-label="Analysis result item">
+        <div class="report-content">
+          <div class="report-header">
+            <!-- Input Text-->
+            <span class="list-item-title" aria-label="Input text"
+              >Input: <span class="user-input">{{ result.inputText }}</span>
+            </span>
 
-        <!-- Settings for Analysis-->
-        <mat-chip-set aria-label="Settings for the Analysis">
-          <mat-chip aria-label="Analysis mode: {{ result.analyzerMode }}">{{
-            result.analyzerMode
-          }}</mat-chip>
-          <mat-chip
-            aria-label="Connection mode: {{
-              result.isOffline ? 'Offline' : 'Online'
-            }}"
-          >
-            {{ result.isOffline ? "Offline" : "Online" }}
-          </mat-chip>
-        </mat-chip-set>
+            <!-- Settings for Analysis-->
+            <mat-chip-set aria-label="Settings for the Analysis">
+              <mat-chip aria-label="Analysis mode: {{ result.analyzerMode }}">{{
+                result.analyzerMode
+              }}</mat-chip>
+              <mat-chip
+                aria-label="Connection mode: {{
+                  result.isOffline ? 'Offline' : 'Online'
+                }}"
+              >
+                {{ result.isOffline ? "Offline" : "Online" }}
+              </mat-chip>
+            </mat-chip-set>
+          </div>
 
-        <!-- Results-->
-        <span matListItemLine *ngFor="let entry of result.report | keyvalue">
-          Letter {{ entry.key }} appears {{ entry.value }} times
-        </span>
-      </mat-list-item>
+          <div class="report-body">
+            <!-- Results-->
+            <span *ngFor="let entry of result.report | keyvalue">
+              Letter {{ entry.key }} appears {{ entry.value }} times
+            </span>
+          </div>
+        </div>
+      </div>
       <mat-divider></mat-divider>
     </ng-container>
   </mat-list>

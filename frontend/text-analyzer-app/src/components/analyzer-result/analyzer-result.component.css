@@ -35,3 +35,18 @@
   color: rgba(0, 0, 0, 0.823);
   font-style: italic;
 }
+
+.report-content {
+display: flex;
+flex-direction: column
+}
+
+.report-header {
+display: flex;
+flex-direction: column;
+}
+
+.report-body {
+display: flex;
+flex-direction: column;
+}
