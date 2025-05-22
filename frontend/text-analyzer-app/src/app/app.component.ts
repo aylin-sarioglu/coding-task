@@ -6,7 +6,7 @@ import { UserInputComponent } from '../components/user-input/user-input.componen
   selector: 'app-root',
   imports: [AnalysisResultComponent, UserInputComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
   title = 'text-analyzer-app';

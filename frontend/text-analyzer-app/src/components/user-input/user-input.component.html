@@ -1,1 +1,41 @@
-<p>user-input works!</p>
+<main class="main">
+  <section>
+    <form class="user-input-form">
+      <mat-form-field class="user-input-full-width">
+        <mat-label>Enter text to analyze</mat-label>
+        <textarea
+          matInput
+          name="inputText"
+          placeholder="Ex. Hello World ..."
+          required
+        ></textarea>
+      </mat-form-field>
+
+      <div class="user-input-button-row">
+        <!-- Toggle Group for Mode Selection of the Analysis -->
+        <mat-button-toggle-group
+          name="analysisMode"
+          aria-label="Analysis Mode"
+          [value]="selectedValues"
+          (change)="onSelectionChange($event)"
+          multiple
+        >
+          <mat-button-toggle value="Vowels">Vowels</mat-button-toggle>
+          <mat-button-toggle value="Consonants">Consonants</mat-button-toggle>
+        </mat-button-toggle-group>
+
+        <!-- Slide Toggle for Online/Offline Mode -->
+        <mat-slide-toggle
+          [(ngModel)]="isOnline"
+          name="onlineStatus"
+          aria-label="Connection Mode"
+        >
+          {{ isOnline ? "Online" : "Offline" }}
+        </mat-slide-toggle>
+
+        <!-- Submit Button -->
+        <button mat-flat-button color="primary" type="submit">Analyze</button>
+      </div>
+    </form>
+  </section>
+</main>
