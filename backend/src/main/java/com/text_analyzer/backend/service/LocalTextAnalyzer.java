@@ -42,36 +42,22 @@ public class LocalTextAnalyzer {
 
     }
 
-    private TextAnalyzerResponseDTO analyzeTextForConsonants(String input) {
-        HashMap<Character, Integer> consonants = new HashMap<>();
-        char[] chars = input.toCharArray();
-        for (int i = 0; i < chars.length; i++) {
-            if (chars[i] != 'a'
-                    && chars[i] != 'A'
-                    && chars[i] != 'e'
-                    && chars[i] != 'E'
-                    && chars[i] != 'i'
-                    && chars[i] != 'I'
-                    && chars[i] != 'o'
-                    && chars[i] != 'O'
-                    && chars[i] != 'u'
-                    && chars[i] != 'U') {
-                Character stringCharacter = Character.toUpperCase(chars[i]);
-                if (consonants.containsKey(stringCharacter)) {
-                    Integer num = consonants.get(stringCharacter);
-                    num++;
-                    consonants.put(stringCharacter, num);
-                } else {
-                    consonants.put(stringCharacter, 1);
-                }
+    private static TextAnalyzerResponseDTO analyzeTextForConsonants(String input) {
+        if (input == null || input.isBlank()) {
+            return new TextAnalyzerResponseDTO(input, AnalyzerMode.CONSONANTS, new HashMap<>());
+        }
+
+        HashMap<Character, Integer> consonantsCountMap = new HashMap<>();
+
+        for (char inputChar : input.toUpperCase().toCharArray()) {
+            if (!isVowel(inputChar) && Character.isLetter(inputChar)) {
+                consonantsCountMap.compute(inputChar, (consonant, count) -> count == null ? 1 : ++count);
+
             }
         }
-        consonants.entrySet().forEach(entrySet -> {
-            System.out.println("Letter '" + entrySet.getKey() + "' appears " + entrySet.getValue() + " times");
-        });
 
-        TextAnalyzerResponseDTO responseDTO = new TextAnalyzerResponseDTO(input, AnalyzerMode.CONSONANTS, consonants);
-        return responseDTO;
+        return new TextAnalyzerResponseDTO(input, AnalyzerMode.CONSONANTS, consonantsCountMap);
+
     }
 
     private static boolean isVowel(char inputChar) {
@@ -79,6 +65,6 @@ public class LocalTextAnalyzer {
     }
 
     public static void main(String[] args) {
-        analyzeTextForVowels("!%$");
+        analyzeTextForConsonants("Hallo");
     }
 }
