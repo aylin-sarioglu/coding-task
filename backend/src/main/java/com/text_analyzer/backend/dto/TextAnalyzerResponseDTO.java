@@ -2,11 +2,11 @@ package com.text_analyzer.backend.dto;
 
 import java.util.Map;
 
-public class TextAnalysisResponseDTO {
+public class TextAnalyzerResponseDTO {
     private Map<Character, Integer> vowelCount;
     private Map<Character, Integer> consonantsCount;
 
-    public TextAnalysisResponseDTO(Map<Character, Integer> vowelCount,
+    public TextAnalyzerResponseDTO(Map<Character, Integer> vowelCount,
             Map<Character, Integer> consonantsCount) {
         this.vowelCount = vowelCount;
         this.consonantsCount = consonantsCount;
