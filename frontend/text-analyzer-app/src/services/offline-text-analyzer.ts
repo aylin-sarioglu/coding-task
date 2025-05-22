@@ -3,7 +3,7 @@ import {
   TextAnalyzer,
   TextAnalyzerRequest,
   TextAnalyzerResponse,
-} from './text-analyzer-interface';
+} from './text-analyzer';
 
 @Injectable({
   providedIn: 'root',

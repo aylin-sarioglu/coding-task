@@ -3,7 +3,7 @@ import {
   TextAnalyzer,
   TextAnalyzerRequest,
   TextAnalyzerResponse,
-} from './text-analyzer-interface';
+} from './text-analyzer';
 import { BehaviorSubject, lastValueFrom, take } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environments';

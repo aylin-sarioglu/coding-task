@@ -1,6 +1,6 @@
 import { Component, input } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
-import { TextAnalyzerResponse } from '../../services/text-analyzer-interface';
+import { TextAnalyzerResponse } from '../../services/text-analyzer';
 import { CommonModule } from '@angular/common';
 import { MatChipsModule } from '@angular/material/chips';
 

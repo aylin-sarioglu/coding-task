@@ -9,7 +9,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { AnalyzerMode } from '../../services/text-analyzer-interface';
+import { AnalyzerMode } from '../../services/text-analyzer';
 
 @Component({
   selector: 'app-user-input',

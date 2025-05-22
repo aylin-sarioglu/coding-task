@@ -6,7 +6,7 @@ import {
   TextAnalyzer,
   TextAnalyzerRequest,
   TextAnalyzerResponse,
-} from '../services/text-analyzer-interface';
+} from '../services/text-analyzer';
 import { OnlineTextAnalyzer } from '../services/online-text-analyzer';
 import { OfflineTextAnalyzer } from '../services/offline-text-analyzer';
 
