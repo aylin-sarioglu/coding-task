@@ -34,6 +34,7 @@
 .user-input {
   font-style: italic;
   color: #3f51b5;
+  word-break: break-word;  
 }
 
 .report-content {
@@ -64,4 +65,8 @@
   border: 1px solid #ccc;
   background: transparent;
   color: #333;
+}
+
+.result-entry {
+  width: 100px;
 }

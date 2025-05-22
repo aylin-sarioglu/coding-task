@@ -36,10 +36,10 @@
 
           <div class="report-body">
             <!-- Results-->
-            <table>
+            <table class="result-table">
               <tr *ngFor="let entry of result.report | keyvalue">
-                <td>Letter {{ entry.key }}</td>
-                <td>{{ entry.value }}</td>
+                <td class="result-entry">Letter {{ entry.key }}</td>
+                <td class="result-entry">{{ entry.value }}</td>
               </tr>
             </table>
           </div>
