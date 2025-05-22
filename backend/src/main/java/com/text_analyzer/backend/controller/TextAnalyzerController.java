@@ -10,7 +10,6 @@ import com.text_analyzer.backend.dto.AnalyzerMode;
 import com.text_analyzer.backend.dto.TextAnalyzerRequestDTO;
 import com.text_analyzer.backend.dto.TextAnalyzerResponseDTO;
 import com.text_analyzer.backend.service.TextAnalyzerService;
-
 import jakarta.validation.Valid;
 
 @RestController
