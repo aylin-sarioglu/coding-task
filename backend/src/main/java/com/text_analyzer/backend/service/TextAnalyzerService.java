@@ -16,12 +16,9 @@ public class TextAnalyzerService {
     }
 
     public TextAnalyzerResponseDTO analyzeText(String inputText, AnalyzerMode analyzerMode) {
-        Map<Character, Integer> exampleReport = Map.of(
-                'h', 3,
-                'l', 5);
+        Map<Character, Integer> analyzerReport = localTextAnalyzer.analyze(inputText, analyzerMode);
 
-        TextAnalyzerResponseDTO responseDTO = new TextAnalyzerResponseDTO(inputText, analyzerMode, exampleReport);
-        return responseDTO;
+        return new TextAnalyzerResponseDTO(inputText, analyzerMode, analyzerReport);
     }
 
 }

@@ -1,16 +1,18 @@
 package com.text_analyzer.backend.service;
 
-import java.util.HashMap;
+import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.Set;
 import org.springframework.stereotype.Component;
 import com.text_analyzer.backend.dto.AnalyzerMode;
-import com.text_analyzer.backend.dto.TextAnalyzerResponseDTO;
 
 @Component
 public class LocalTextAnalyzer {
-    private static final Set<Character> VOWEL_SET = Set.of('A', 'E', 'I', 'O', 'U');
+    private static final Set<Character> VOWEL_SET = new LinkedHashSet<>(Arrays.asList('A', 'E', 'I', 'O', 'U'));
 
-    public TextAnalyzerResponseDTO analyze(String input, AnalyzerMode type) {
+    public Map<Character, Integer> analyze(String input, AnalyzerMode type) {
         switch (type) {
             case AnalyzerMode.VOWELS:
                 return analyzeTextForVowels(input);
@@ -21,12 +23,12 @@ public class LocalTextAnalyzer {
         }
     }
 
-    private static TextAnalyzerResponseDTO analyzeTextForVowels(String input) {
+    private static Map<Character, Integer> analyzeTextForVowels(String input) {
         if (input == null || input.isBlank()) {
-            return new TextAnalyzerResponseDTO(input, AnalyzerMode.VOWELS, new HashMap<>());
+            return new LinkedHashMap<>();
         }
 
-        HashMap<Character, Integer> vowelsCountMap = new HashMap<>();
+        LinkedHashMap<Character, Integer> vowelsCountMap = new LinkedHashMap<>();
 
         for (char vowel : VOWEL_SET) {
             vowelsCountMap.put(vowel, 0);
@@ -38,16 +40,16 @@ public class LocalTextAnalyzer {
             }
         }
 
-        return new TextAnalyzerResponseDTO(input, AnalyzerMode.VOWELS, vowelsCountMap);
+        return vowelsCountMap;
 
     }
 
-    private static TextAnalyzerResponseDTO analyzeTextForConsonants(String input) {
+    private static Map<Character, Integer> analyzeTextForConsonants(String input) {
         if (input == null || input.isBlank()) {
-            return new TextAnalyzerResponseDTO(input, AnalyzerMode.CONSONANTS, new HashMap<>());
+            return new LinkedHashMap<>();
         }
 
-        HashMap<Character, Integer> consonantsCountMap = new HashMap<>();
+        LinkedHashMap<Character, Integer> consonantsCountMap = new LinkedHashMap<>();
 
         for (char inputChar : input.toUpperCase().toCharArray()) {
             if (!isVowel(inputChar) && Character.isLetter(inputChar)) {
@@ -56,15 +58,11 @@ public class LocalTextAnalyzer {
             }
         }
 
-        return new TextAnalyzerResponseDTO(input, AnalyzerMode.CONSONANTS, consonantsCountMap);
+        return consonantsCountMap;
 
     }
 
     private static boolean isVowel(char inputChar) {
         return VOWEL_SET.contains(Character.toUpperCase(inputChar));
-    }
-
-    public static void main(String[] args) {
-        analyzeTextForConsonants("Hallo");
     }
 }
