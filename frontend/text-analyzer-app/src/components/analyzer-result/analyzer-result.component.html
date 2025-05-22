@@ -1,13 +1,34 @@
 <main class="main">
   <h2 class="list-title">Analyzer Results</h2>
 
-  <mat-list *ngIf="results" role="list" class="analyzer-result-list">
+  <mat-list
+    aria-label="List of the Analyzer Results"
+    *ngIf="results"
+    role="list"
+    class="analyzer-result-list"
+  >
     <ng-container *ngFor="let result of results()">
-      <mat-list-item>
-        <span matListItemTitle class="list-item-title"
-          >Analyzed Text {{ result.inputText }} for {{ result.analyzerMode }} in
-          {{ result.isOffline ? "Offline" : "Online" }} Mode</span
-        >
+      <mat-list-item aria-label="Analysis result item">
+        <!-- Input Text-->
+        <span matListItemTitle class="list-item-title" aria-label="Input text"
+          >Input: <span class="user-input">{{ result.inputText }}</span>
+        </span>
+
+        <!-- Settings for Analysis-->
+        <mat-chip-set aria-label="Settings for the Analysis">
+          <mat-chip aria-label="Analysis mode: {{ result.analyzerMode }}">{{
+            result.analyzerMode
+          }}</mat-chip>
+          <mat-chip
+            aria-label="Connection mode: {{
+              result.isOffline ? 'Offline' : 'Online'
+            }}"
+          >
+            {{ result.isOffline ? "Offline" : "Online" }}
+          </mat-chip>
+        </mat-chip-set>
+
+        <!-- Results-->
         <span matListItemLine *ngFor="let entry of result.report | keyvalue">
           Letter {{ entry.key }} appears {{ entry.value }} times
         </span>

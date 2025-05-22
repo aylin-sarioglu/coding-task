@@ -1,6 +1,10 @@
 <main class="main">
   <section>
-    <form class="user-input-form" (ngSubmit)="onSubmit()">
+    <form
+      class="user-input-form"
+      (ngSubmit)="onSubmit()"
+      aria-label="Text analysis form"
+    >
       <mat-form-field class="user-input-full-width">
         <mat-label>Enter text to analyze</mat-label>
         <textarea

@@ -8,3 +8,30 @@
   font-weight: 500;
   color: #3f51b5;
 }
+
+.main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.title {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 800px; 
+}
+
+.user-input {
+  color:rgba(0, 0, 0, 0.823);
+  font-style: italic;
+}

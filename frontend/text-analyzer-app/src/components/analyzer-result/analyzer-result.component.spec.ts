@@ -1,18 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AnalysisResultComponent } from './analyzer-result.component';
+import { AnalyzerResultComponent } from './analyzer-result.component';
+import { MatChipsModule } from '@angular/material/chips';
 
 describe('AnalysisResultComponent', () => {
-  let component: AnalysisResultComponent;
-  let fixture: ComponentFixture<AnalysisResultComponent>;
+  let component: AnalyzerResultComponent;
+  let fixture: ComponentFixture<AnalyzerResultComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AnalysisResultComponent]
+      imports: [AnalyzerResultComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AnalysisResultComponent);
+    fixture = TestBed.createComponent(AnalyzerResultComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

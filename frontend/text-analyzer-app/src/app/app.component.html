@@ -1,13 +1,18 @@
-<main class="main">
+<main class="main" aria-label="Text analysis application">
   <header class="title">
     <h1>TextAnalyzer</h1>
   </header>
-  <section class="content">
-    <app-user-input
-      [(isOnline)]="isOnline"
-      [(analyzerMode)]="analyzerMode"
-      (onAnalyze)="onAnalyze($event)"
-    ></app-user-input>
-    <app-analyzer-result [results]="reports()"></app-analyzer-result>
+  <section class="content" aria-label="Input and analysis section">
+    <section aria-label="User input section">
+      <app-user-input
+        [(isOnline)]="isOnline"
+        [(analyzerMode)]="analyzerMode"
+        (onAnalyze)="onAnalyze($event)"
+      ></app-user-input>
+    </section>
+
+    <section aria-label="Analyzer results section">
+      <app-analyzer-result [results]="reports()"></app-analyzer-result>
+    </section>
   </section>
 </main>
