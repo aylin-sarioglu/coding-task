@@ -10,20 +10,19 @@ import com.text_analyzer.backend.dto.AnalyzerMode;
 
 @Component
 public class LocalTextAnalyzer {
-    private static final Set<Character> VOWEL_SET = new LinkedHashSet<>(Arrays.asList('A', 'E', 'I', 'O', 'U'));
+    private final Set<Character> VOWEL_SET = new LinkedHashSet<>(Arrays.asList('A', 'E', 'I', 'O', 'U'));
 
     public Map<Character, Integer> analyze(String input, AnalyzerMode type) {
         switch (type) {
             case AnalyzerMode.VOWELS:
+            default:
                 return analyzeTextForVowels(input);
             case AnalyzerMode.CONSONANTS:
                 return analyzeTextForConsonants(input);
-            default:
-                return analyzeTextForVowels(input);
         }
     }
 
-    private static Map<Character, Integer> analyzeTextForVowels(String input) {
+    private Map<Character, Integer> analyzeTextForVowels(String input) {
         if (input == null || input.isBlank()) {
             return new LinkedHashMap<>();
         }
@@ -44,7 +43,7 @@ public class LocalTextAnalyzer {
 
     }
 
-    private static Map<Character, Integer> analyzeTextForConsonants(String input) {
+    private Map<Character, Integer> analyzeTextForConsonants(String input) {
         if (input == null || input.isBlank()) {
             return new LinkedHashMap<>();
         }
@@ -62,7 +61,7 @@ public class LocalTextAnalyzer {
 
     }
 
-    private static boolean isVowel(char inputChar) {
+    private boolean isVowel(char inputChar) {
         return VOWEL_SET.contains(Character.toUpperCase(inputChar));
     }
 }
