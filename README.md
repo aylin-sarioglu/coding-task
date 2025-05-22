@@ -30,6 +30,7 @@ A simple application that analyzes text input for vowels and consonants. The app
 - Angular 19
 - TypeScript
 - Reactive Forms
+- Karma/Jasmin
 - Material UI
 
 ---
@@ -103,6 +104,11 @@ Runs on: `http://localhost:4200`
 ---
 
 ## 🧪 Running Tests
+### Backend
+```bash
+cd frontend/text-analyzer-app
+./ng test (--no-watch)
+```
 
 ### Backend
 ```bash
@@ -113,8 +119,6 @@ cd backend
 Tests include:
 
 - Vowel/consonant detection logic
-- Enum behavior
-- Word frequency detection
 - Edge cases (empty string, case insensitivity)
 
 ---
