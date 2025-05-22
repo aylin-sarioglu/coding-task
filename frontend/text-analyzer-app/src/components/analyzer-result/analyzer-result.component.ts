@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
 import {
   AnalyzerMode,
@@ -14,15 +14,5 @@ import { CommonModule } from '@angular/common';
   styleUrl: './analyzer-result.component.css',
 })
 export class AnalyzerResultComponent {
-  results: TextAnalyzerResponse[] | null = [];
-
-  constructor(private readonly textAnalyzer: OnlineTextAnalyzer) {}
-
-  ngOnInit(): void {
-    this.textAnalyzer.result$.subscribe((response) => {
-      if (response) {
-        this.results?.unshift(response);
-      }
-    });
-  }
+  results = input<TextAnalyzerResponse[]>([]);
 }

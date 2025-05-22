@@ -6,12 +6,13 @@ export interface TextAnalyzerRequest {
   analyzerMode: AnalyzerMode;
 }
 
-export interface TextAnalyzerResponse {
+export interface TextAnalyzerResponse {  
   inputText: string;
   analyzerMode: AnalyzerMode;
-  report: Record<string, number>;
+  report: Map<string, number>;
+  
 }
 
 export interface TextAnalyzer {
-  analyze(data: TextAnalyzerRequest): Observable<TextAnalyzerResponse>;
+  analyze(data: TextAnalyzerRequest): Promise<TextAnalyzerResponse>;
 }

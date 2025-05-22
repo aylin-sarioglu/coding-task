@@ -3,7 +3,11 @@
     <h1>TextAnalyzer</h1>
   </header>
   <section class="content">
-    <app-user-input></app-user-input>
-    <app-analyzer-result></app-analyzer-result>
+    <app-user-input
+      [(isOnline)]="isOnline"
+      [(analyzerMode)]="analyzerMode"
+      (onAnalyze)="onAnalyze($event)"
+    ></app-user-input>
+    <app-analyzer-result [results]="reports()"></app-analyzer-result>
   </section>
 </main>

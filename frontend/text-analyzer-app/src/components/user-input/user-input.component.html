@@ -18,10 +18,9 @@
           name="analyzerType"
           aria-label="Analyzer Type"
           [hideSingleSelectionIndicator]="hideSingleSelectionIndicator()"
-          [value]="selectedValue"
           (change)="onSelectionChange($event)"
         >
-          <mat-button-toggle value="VOWELS">Vowels</mat-button-toggle>
+          <mat-button-toggle value="VOWELS" checked>Vowels</mat-button-toggle>
           <mat-button-toggle value="CONSONANTS">Consonants</mat-button-toggle>
         </mat-button-toggle-group>
 
@@ -31,7 +30,7 @@
           name="onlineStatus"
           aria-label="Connection Mode"
         >
-          {{ isOnline ? "Online" : "Offline" }}
+          {{ isOnline() ? "Online" : "Offline" }}
         </mat-slide-toggle>
 
         <!-- Submit Button -->

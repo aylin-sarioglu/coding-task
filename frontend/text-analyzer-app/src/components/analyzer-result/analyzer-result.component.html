@@ -2,7 +2,7 @@
   <h2 class="list-title">Analyzer Results</h2>
 
   <mat-list *ngIf="results" role="list" class="analyzer-result-list">
-    <ng-container *ngFor="let result of results">
+    <ng-container *ngFor="let result of results()">
       <mat-list-item>
         <span matListItemTitle class="list-item-title"
           >Analyzed Text {{ result.inputText }} for

@@ -1,4 +1,4 @@
-import { Component, input, signal } from '@angular/core';
+import { Component, model, output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import {
@@ -16,6 +16,7 @@ import {
   TextAnalyzerResponse,
 } from '../../services/text-analyzer-interface';
 import { OnlineTextAnalyzer } from '../../services/online-text-analyzer';
+import { OfflineTextAnalyzer } from '../../services/offline-text-analyzer';
 
 @Component({
   selector: 'app-user-input',
@@ -35,11 +36,24 @@ import { OnlineTextAnalyzer } from '../../services/online-text-analyzer';
 })
 export class UserInputComponent {
   inputText: string = '';
-  selectedValue: AnalyzerMode = 'VOWELS';
-  isOnline: boolean = false;
+  analyzerMode = model<AnalyzerMode>('VOWELS');
+  isOnline = model<boolean>(false);
+  onAnalyze = output<string>();
 
-  constructor(private readonly textAnalyzer: OnlineTextAnalyzer) {}
+  /*
+  constructor(
+    private readonly onlineTextAnalyzer: OnlineTextAnalyzer,
+    private readonly offlineTextAnalyzer: OfflineTextAnalyzer
+  ) {}
 
+  get textAnalyzer(): TextAnalyzer {
+    if (this.isOnline) {
+      return this.onlineTextAnalyzer;
+    }
+    return this.offlineTextAnalyzer;
+  }
+  */
+  
   hideSingleSelectionIndicator = signal(false);
 
   toggleSingleSelectionIndicator() {
@@ -47,10 +61,13 @@ export class UserInputComponent {
   }
 
   onSelectionChange(event: MatButtonToggleChange) {
-    this.selectedValue = event.value;
+    this.analyzerMode.set(event.value);
   }
 
   onSubmit(): void {
+    this.onAnalyze.emit(this.inputText)
+
+    /*
     const request: TextAnalyzerRequest = {
       inputText: this.inputText,
       analyzerMode: this.selectedValue,
@@ -67,5 +84,6 @@ export class UserInputComponent {
         );
       },
     });
+    */
   }
 }

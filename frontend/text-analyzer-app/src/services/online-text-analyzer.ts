@@ -4,7 +4,7 @@ import {
   TextAnalyzerRequest,
   TextAnalyzerResponse,
 } from './text-analyzer-interface';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, lastValueFrom, Observable, take, tap } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environments';
 
@@ -16,14 +16,11 @@ export class OnlineTextAnalyzer implements TextAnalyzer {
 
   constructor(private readonly http: HttpClient) {}
 
-  // allow  using response in multiple components
-  private resultSubject = new BehaviorSubject<TextAnalyzerResponse | null>(null);
-  result$ = this.resultSubject.asObservable(); 
-
-
-  analyze(data: TextAnalyzerRequest): Observable<TextAnalyzerResponse> {
-    return this.http.post<TextAnalyzerResponse>(this.apiUrl, data).pipe(
-       tap(result => this.resultSubject.next(result))
-    );
+  analyze(data: TextAnalyzerRequest): Promise<TextAnalyzerResponse> {
+    // for easiness
+    const request$ = this.http
+      .post<TextAnalyzerResponse>(this.apiUrl, data)
+      .pipe(take(1));
+    return lastValueFrom(request$);
   }
 }
