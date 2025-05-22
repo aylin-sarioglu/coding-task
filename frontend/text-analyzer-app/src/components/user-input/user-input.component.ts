@@ -40,20 +40,6 @@ export class UserInputComponent {
   isOnline = model<boolean>(false);
   onAnalyze = output<string>();
 
-  /*
-  constructor(
-    private readonly onlineTextAnalyzer: OnlineTextAnalyzer,
-    private readonly offlineTextAnalyzer: OfflineTextAnalyzer
-  ) {}
-
-  get textAnalyzer(): TextAnalyzer {
-    if (this.isOnline) {
-      return this.onlineTextAnalyzer;
-    }
-    return this.offlineTextAnalyzer;
-  }
-  */
-  
   hideSingleSelectionIndicator = signal(false);
 
   toggleSingleSelectionIndicator() {
@@ -65,25 +51,6 @@ export class UserInputComponent {
   }
 
   onSubmit(): void {
-    this.onAnalyze.emit(this.inputText)
-
-    /*
-    const request: TextAnalyzerRequest = {
-      inputText: this.inputText,
-      analyzerMode: this.selectedValue,
-    };
-
-    this.textAnalyzer.analyze(request).subscribe({
-      next: (response: TextAnalyzerResponse) => {
-        console.log('Analyzed following request: ', request);
-      },
-      error: (err) => {
-        console.error(
-          'An error occurred while analyzing the text. Please try again.',
-          err
-        );
-      },
-    });
-    */
+    this.onAnalyze.emit(this.inputText);
   }
 }
