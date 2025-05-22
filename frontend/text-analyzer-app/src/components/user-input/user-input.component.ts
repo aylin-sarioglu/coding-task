@@ -9,6 +9,12 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {
+  TextAnalyzer,
+  TextAnalyzerRequest,
+  TextAnalyzerResponse,
+} from '../../services/text-analyzer-interface';
+import { OnlineTextAnalyzer } from '../../services/online-text-analyzer';
 
 @Component({
   selector: 'app-user-input',
@@ -28,8 +34,11 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 })
 export class UserInputComponent {
   inputText: string = '';
-  selectedValue: 'Vowels' | 'Consonants' = 'Vowels';
+  selectedValue: 'VOWELS' | 'CONSONANTS' = 'VOWELS';
   isOnline: boolean = false;
+  analysisResult: { [key: string]: number } = {};
+
+  constructor(private readonly textAnalyzer: OnlineTextAnalyzer) {}
 
   hideSingleSelectionIndicator = signal(false);
 
@@ -38,10 +47,28 @@ export class UserInputComponent {
   }
 
   onSelectionChange(event: MatButtonToggleChange) {
-    console.log(event);
+    this.selectedValue = event.value;
   }
 
   onSubmit(): void {
     console.log(this.inputText, this.isOnline, this.selectedValue);
+
+    const request: TextAnalyzerRequest = {
+      inputText: this.inputText,
+      analyzerMode: this.selectedValue,
+    };
+
+    this.textAnalyzer.analyze(request).subscribe({
+      next: (response: TextAnalyzerResponse) => {
+        this.analysisResult = response.report;
+        console.log(this.analysisResult);
+      },
+      error: (err) => {
+        console.error(
+          'An error occurred while analyzing the text. Please try again.',
+          err
+        );
+      },
+    });
   }
 }
