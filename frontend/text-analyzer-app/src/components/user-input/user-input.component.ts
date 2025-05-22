@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, input, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import {
@@ -27,7 +27,9 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
   styleUrl: './user-input.component.css',
 })
 export class UserInputComponent {
-  isOnline = false;
+  inputText: string = '';
+  selectedValue: 'Vowels' | 'Consonants' = 'Vowels';
+  isOnline: boolean = false;
 
   hideSingleSelectionIndicator = signal(false);
 
@@ -35,8 +37,11 @@ export class UserInputComponent {
     this.hideSingleSelectionIndicator.update((value) => !value);
   }
 
-  selectedValue = 'Vowels';
   onSelectionChange(event: MatButtonToggleChange) {
     console.log(event);
+  }
+
+  onSubmit(): void {
+    console.log(this.inputText, this.isOnline, this.selectedValue);
   }
 }

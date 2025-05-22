@@ -1,11 +1,12 @@
 <main class="main">
   <section>
-    <form class="user-input-form">
+    <form class="user-input-form" (ngSubmit)="onSubmit()">
       <mat-form-field class="user-input-full-width">
         <mat-label>Enter text to analyze</mat-label>
         <textarea
           matInput
           name="inputText"
+          [(ngModel)]="inputText"
           placeholder="Ex. Hello World ..."
           required
         ></textarea>
