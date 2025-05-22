@@ -16,9 +16,9 @@
         <mat-button-toggle-group
           name="analysisMode"
           aria-label="Analysis Mode"
-          [value]="selectedValues"
+          [hideSingleSelectionIndicator]="hideSingleSelectionIndicator()"
+          [value]="selectedValue"
           (change)="onSelectionChange($event)"
-          multiple
         >
           <mat-button-toggle value="Vowels">Vowels</mat-button-toggle>
           <mat-button-toggle value="Consonants">Consonants</mat-button-toggle>

@@ -29,28 +29,14 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 export class UserInputComponent {
   isOnline = false;
 
-  hideMultipleSelectionIndicator = signal(false);
+  hideSingleSelectionIndicator = signal(false);
 
-  toggleMultipleSelectionIndicator() {
-    this.hideMultipleSelectionIndicator.update((value) => !value);
+  toggleSingleSelectionIndicator() {
+    this.hideSingleSelectionIndicator.update((value) => !value);
   }
 
-  selectedValues: string[] = ['Vowels'];
+  selectedValue = 'Vowels';
   onSelectionChange(event: MatButtonToggleChange) {
-    enforceMinimumModeSelection(event, this.selectedValues);
+    console.log(event);
   }
-}
-
-function enforceMinimumModeSelection(
-  event: MatButtonToggleChange,
-  selectedValues: string[]
-) {
-  const newSelection = event.source.buttonToggleGroup.value;
-
-  if (!newSelection || newSelection.length === 0) {
-    event.source.buttonToggleGroup.value = selectedValues;
-    return;
-  }
-
-  selectedValues = newSelection;
 }
