@@ -12,10 +12,10 @@
       </mat-form-field>
 
       <div class="user-input-button-row">
-        <!-- Toggle Group for Mode Selection of the Analysis -->
+        <!-- Toggle Group for Mode Selection of the Analyzer -->
         <mat-button-toggle-group
-          name="analysisMode"
-          aria-label="Analysis Mode"
+          analyzerMode="analyzerMode"
+          aria-label="Analyzer Mode"
           [hideSingleSelectionIndicator]="hideSingleSelectionIndicator()"
           [value]="selectedValue"
           (change)="onSelectionChange($event)"
