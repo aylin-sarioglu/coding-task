@@ -10,6 +10,7 @@ import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {
+  AnalyzerMode,
   TextAnalyzer,
   TextAnalyzerRequest,
   TextAnalyzerResponse,
@@ -36,7 +37,6 @@ export class UserInputComponent {
   inputText: string = '';
   selectedValue: 'VOWELS' | 'CONSONANTS' = 'VOWELS';
   isOnline: boolean = false;
-  analysisResult: { [key: string]: number } = {};
 
   constructor(private readonly textAnalyzer: OnlineTextAnalyzer) {}
 
@@ -51,8 +51,6 @@ export class UserInputComponent {
   }
 
   onSubmit(): void {
-    console.log(this.inputText, this.isOnline, this.selectedValue);
-
     const request: TextAnalyzerRequest = {
       inputText: this.inputText,
       analyzerMode: this.selectedValue,
@@ -60,8 +58,7 @@ export class UserInputComponent {
 
     this.textAnalyzer.analyze(request).subscribe({
       next: (response: TextAnalyzerResponse) => {
-        this.analysisResult = response.report;
-        console.log(this.analysisResult);
+        console.log('Analyzed following request: ', request);
       },
       error: (err) => {
         console.error(
