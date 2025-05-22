@@ -44,6 +44,12 @@ export class UserInputComponent {
   }
 
   onSubmit(): void {
+    if (this.inputText.trim() == '') {
+      alert(
+        'Please enter some valid text. Input containing only spaces is not allowed.'
+      );
+      return;
+    }
     this.onAnalyze.emit(this.inputText);
   }
 }
