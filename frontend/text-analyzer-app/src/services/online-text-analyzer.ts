@@ -4,7 +4,7 @@ import {
   TextAnalyzerRequest,
   TextAnalyzerResponse,
 } from './text-analyzer-interface';
-import { BehaviorSubject, lastValueFrom, Observable, take, tap } from 'rxjs';
+import { BehaviorSubject, lastValueFrom, take } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environments';
 

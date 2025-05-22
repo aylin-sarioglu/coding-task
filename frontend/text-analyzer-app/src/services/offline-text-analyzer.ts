@@ -8,7 +8,6 @@ import {
 @Injectable({
   providedIn: 'root',
 })
-
 export class OfflineTextAnalyzer implements TextAnalyzer {
   async analyze(data: TextAnalyzerRequest): Promise<TextAnalyzerResponse> {
     const result = this.analyzeText(data);
@@ -25,14 +24,14 @@ export class OfflineTextAnalyzer implements TextAnalyzer {
           inputText: request.inputText,
           analyzerMode: request.analyzerMode,
           report: this.analyzeTextForVowels(request.inputText),
-          isOffline: true
+          isOffline: true,
         } satisfies TextAnalyzerResponse;
       case 'CONSONANTS':
         return {
           inputText: request.inputText,
           analyzerMode: request.analyzerMode,
           report: this.analyzeTextForConsonants(request.inputText),
-          isOffline: true
+          isOffline: true,
         } satisfies TextAnalyzerResponse;
     }
   }

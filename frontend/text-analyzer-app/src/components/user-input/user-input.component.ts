@@ -1,5 +1,5 @@
 import { Component, model, output, signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgModel } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import {
   MatButtonToggleChange,
@@ -9,14 +9,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import {
-  AnalyzerMode,
-  TextAnalyzer,
-  TextAnalyzerRequest,
-  TextAnalyzerResponse,
-} from '../../services/text-analyzer-interface';
-import { OnlineTextAnalyzer } from '../../services/online-text-analyzer';
-import { OfflineTextAnalyzer } from '../../services/offline-text-analyzer';
+import { AnalyzerMode } from '../../services/text-analyzer-interface';
 
 @Component({
   selector: 'app-user-input',

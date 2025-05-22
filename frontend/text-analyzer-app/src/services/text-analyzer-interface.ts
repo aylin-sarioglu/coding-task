@@ -1,4 +1,3 @@
-import { Observable } from 'rxjs';
 export type AnalyzerMode = 'VOWELS' | 'CONSONANTS';
 
 export interface TextAnalyzerRequest {

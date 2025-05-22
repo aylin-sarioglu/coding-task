@@ -1,10 +1,14 @@
 import { Component, signal } from '@angular/core';
 import { AnalyzerResultComponent } from '../components/analyzer-result/analyzer-result.component';
 import { UserInputComponent } from '../components/user-input/user-input.component';
-import { AnalyzerMode, TextAnalyzer, TextAnalyzerRequest, TextAnalyzerResponse } from '../services/text-analyzer-interface';
+import {
+  AnalyzerMode,
+  TextAnalyzer,
+  TextAnalyzerRequest,
+  TextAnalyzerResponse,
+} from '../services/text-analyzer-interface';
 import { OnlineTextAnalyzer } from '../services/online-text-analyzer';
 import { OfflineTextAnalyzer } from '../services/offline-text-analyzer';
-
 
 @Component({
   selector: 'app-root',
@@ -15,10 +19,9 @@ import { OfflineTextAnalyzer } from '../services/offline-text-analyzer';
 export class AppComponent {
   title = 'text-analyzer-app';
 
-  reports = signal<TextAnalyzerResponse[]>([])
+  reports = signal<TextAnalyzerResponse[]>([]);
   analyzerMode = signal<AnalyzerMode>('VOWELS');
   isOnline = signal<boolean>(false);
-
 
   constructor(
     private readonly onlineTextAnalyzer: OnlineTextAnalyzer,
@@ -39,6 +42,6 @@ export class AppComponent {
     };
 
     const response = await this.textAnalyzer.analyze(request);
-    this.reports.update(reports => [response, ...reports])
-  } 
+    this.reports.update((reports) => [response, ...reports]);
+  }
 }
