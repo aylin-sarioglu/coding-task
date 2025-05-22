@@ -1,4 +1,4 @@
-# 🧠 Text Analyzer (Fullstack Task)
+# 🧠 Text Analyzer (Coding Task)
 
 A simple application that analyzes text input for vowels and consonants. The app supports both **online** (via REST API) and **offline** (client-side) modes. Implemented using **Angular**, **Spring Boot**, and tested with **JUnit**.
 
@@ -107,7 +107,7 @@ Runs on: `http://localhost:4200`
 ### Backend
 ```bash
 cd backend
-./mvnw test
+./mvn test
 ```
 
 Tests include:
