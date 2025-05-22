@@ -8,8 +8,8 @@
     class="analyzer-result-list"
   >
     <ng-container *ngFor="let result of results()">
-      <div aria-label="Analysis result item">
-        <div class="report-content">
+      <mat-card appearance="outlined" aria-label="Analysis result item">
+        <mat-card-content class="report-content">
           <div class="report-header">
             <!-- Input Text-->
             <span class="list-item-title" aria-label="Input text"
@@ -18,10 +18,13 @@
 
             <!-- Settings for Analysis-->
             <mat-chip-set aria-label="Settings for the Analysis">
-              <mat-chip aria-label="Analysis mode: {{ result.analyzerMode }}">{{
-                result.analyzerMode
-              }}</mat-chip>
               <mat-chip
+                class="chip-stroked"
+                aria-label="Analysis mode: {{ result.analyzerMode }}"
+                >{{ result.analyzerMode }}</mat-chip
+              >
+              <mat-chip
+                class="chip-stroked"
                 aria-label="Connection mode: {{
                   result.isOffline ? 'Offline' : 'Online'
                 }}"
@@ -33,13 +36,15 @@
 
           <div class="report-body">
             <!-- Results-->
-            <span *ngFor="let entry of result.report | keyvalue">
-              Letter {{ entry.key }} appears {{ entry.value }} times
-            </span>
+            <table>
+              <tr *ngFor="let entry of result.report | keyvalue">
+                <td>Letter {{ entry.key }}</td>
+                <td>{{ entry.value }}</td>
+              </tr>
+            </table>
           </div>
-        </div>
-      </div>
-      <mat-divider></mat-divider>
+        </mat-card-content>
+      </mat-card>
     </ng-container>
   </mat-list>
 </main>
