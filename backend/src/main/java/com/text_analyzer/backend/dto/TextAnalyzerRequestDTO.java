@@ -10,14 +10,9 @@ public class TextAnalyzerRequestDTO {
     @NotNull
     private AnalyzerMode analyzerMode;
 
-    @NotNull
-    private AnalyzerType analyzerType;
-
-    public TextAnalyzerRequestDTO(@NotBlank String inputText, @NotNull AnalyzerMode analyzerMode,
-            @NotNull AnalyzerType analyzerType) {
+    public TextAnalyzerRequestDTO(@NotBlank String inputText, @NotNull AnalyzerMode analyzerMode) {
         this.inputText = inputText;
         this.analyzerMode = analyzerMode;
-        this.analyzerType = analyzerType;
     }
 
     public String getInputText() {
@@ -34,14 +29,6 @@ public class TextAnalyzerRequestDTO {
 
     public void setAnalyzerMode(AnalyzerMode analyzerMode) {
         this.analyzerMode = analyzerMode;
-    }
-
-    public AnalyzerType getAnalyzerType() {
-        return analyzerType;
-    }
-
-    public void setAnalyzerType(AnalyzerType analyzerType) {
-        this.analyzerType = analyzerType;
     }
 
 }

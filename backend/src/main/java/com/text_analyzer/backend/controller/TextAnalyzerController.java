@@ -5,9 +5,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.text_analyzer.backend.dto.AnalyzerMode;
-import com.text_analyzer.backend.dto.AnalyzerType;
 import com.text_analyzer.backend.dto.TextAnalyzerRequestDTO;
 import com.text_analyzer.backend.dto.TextAnalyzerResponseDTO;
 import com.text_analyzer.backend.service.TextAnalyzerService;
@@ -29,15 +27,8 @@ public class TextAnalyzerController {
 
         String inputText = request.getInputText();
         AnalyzerMode mode = request.getAnalyzerMode();
-        AnalyzerType type = request.getAnalyzerType();
 
-        TextAnalyzerResponseDTO result;
-
-        if (mode == AnalyzerMode.OFFLINE) {
-            result = textAnalyzerService.analyzeOffline(inputText, type);
-        } else {
-            result = textAnalyzerService.analyzeOnline(inputText, type);
-        }
+        TextAnalyzerResponseDTO result = textAnalyzerService.analyzeText(inputText, mode);
 
         return ResponseEntity.ok(result);
     }

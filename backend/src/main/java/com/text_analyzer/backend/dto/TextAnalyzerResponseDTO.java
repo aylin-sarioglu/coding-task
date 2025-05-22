@@ -4,12 +4,12 @@ import java.util.Map;
 
 public class TextAnalyzerResponseDTO {
     private String inputText;
-    private AnalyzerType analyzerType;
+    private AnalyzerMode analyzerMode;
     private Map<Character, Integer> report;
 
-    public TextAnalyzerResponseDTO(String inputText, AnalyzerType analyzerType, Map<Character, Integer> report) {
+    public TextAnalyzerResponseDTO(String inputText, AnalyzerMode analyzerMode, Map<Character, Integer> report) {
         this.inputText = inputText;
-        this.analyzerType = analyzerType;
+        this.analyzerMode = analyzerMode;
         this.report = report;
     }
 
@@ -21,12 +21,12 @@ public class TextAnalyzerResponseDTO {
         this.inputText = inputText;
     }
 
-    public AnalyzerType getAnalyzerType() {
-        return analyzerType;
+    public AnalyzerMode getAnalyzerMode() {
+        return analyzerMode;
     }
 
-    public void setAnalyzerType(AnalyzerType analyzerType) {
-        this.analyzerType = analyzerType;
+    public void setAnalysisMode(AnalyzerMode analyzerMode) {
+        this.analyzerMode = analyzerMode;
     }
 
     public Map<Character, Integer> getReport() {

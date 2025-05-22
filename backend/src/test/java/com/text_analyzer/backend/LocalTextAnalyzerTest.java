@@ -7,7 +7,7 @@ import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.text_analyzer.backend.dto.AnalyzerType;
+import com.text_analyzer.backend.dto.AnalyzerMode;
 import com.text_analyzer.backend.dto.TextAnalyzerResponseDTO;
 import com.text_analyzer.backend.service.LocalTextAnalyzer;
 
@@ -22,10 +22,10 @@ public class LocalTextAnalyzerTest {
     @Test
     void testAnalyzeVowelsOnly() {
         String input = "AaEeIiOoUu";
-        TextAnalyzerResponseDTO result = analyzer.analyze(input, AnalyzerType.VOWELS);
+        TextAnalyzerResponseDTO result = analyzer.analyze(input, AnalyzerMode.VOWELS);
 
         Map<Character, Integer> vowels = result.getReport();
-        assertEquals(AnalyzerType.VOWELS, result.getAnalyzerType());
+        assertEquals(AnalyzerMode.VOWELS, result.getAnalyzerMode());
         assertEquals(input, result.getInputText());
         assertEquals(2, vowels.get('A'));
         assertEquals(2, vowels.get('E'));
@@ -37,10 +37,10 @@ public class LocalTextAnalyzerTest {
     @Test
     void testAnalyzeConsonantsOnly() {
         String input = "BCDbcd";
-        TextAnalyzerResponseDTO result = analyzer.analyze(input, AnalyzerType.CONSONANTS);
+        TextAnalyzerResponseDTO result = analyzer.analyze(input, AnalyzerMode.CONSONANTS);
 
         Map<Character, Integer> consonants = result.getReport();
-        assertEquals(AnalyzerType.CONSONANTS, result.getAnalyzerType());
+        assertEquals(AnalyzerMode.CONSONANTS, result.getAnalyzerMode());
         assertEquals(input, result.getInputText());
         assertEquals(2, consonants.get('B'));
         assertEquals(2, consonants.get('C'));
@@ -50,10 +50,10 @@ public class LocalTextAnalyzerTest {
     @Test
     void testAnalyzeWithMixedCharactersVowels() {
         String input = "Hello World";
-        TextAnalyzerResponseDTO result = analyzer.analyze(input, AnalyzerType.VOWELS);
+        TextAnalyzerResponseDTO result = analyzer.analyze(input, AnalyzerMode.VOWELS);
 
         Map<Character, Integer> vowels = result.getReport();
-        assertEquals(AnalyzerType.VOWELS, result.getAnalyzerType());
+        assertEquals(AnalyzerMode.VOWELS, result.getAnalyzerMode());
         assertEquals(input, result.getInputText());
         assertEquals(1, vowels.get('E'));
         assertEquals(2, vowels.get('O'));
@@ -65,10 +65,10 @@ public class LocalTextAnalyzerTest {
     @Test
     void testAnalyzeWithMixedCharactersConsonants() {
         String input = "Hello World";
-        TextAnalyzerResponseDTO result = analyzer.analyze(input, AnalyzerType.CONSONANTS);
+        TextAnalyzerResponseDTO result = analyzer.analyze(input, AnalyzerMode.CONSONANTS);
 
         Map<Character, Integer> consonants = result.getReport();
-        assertEquals(AnalyzerType.CONSONANTS, result.getAnalyzerType());
+        assertEquals(AnalyzerMode.CONSONANTS, result.getAnalyzerMode());
         assertEquals(input, result.getInputText());
         assertEquals(1, consonants.get('H'));
         assertEquals(3, consonants.get('L'));
@@ -80,10 +80,10 @@ public class LocalTextAnalyzerTest {
     @Test
     void testAnalyzeWithMixedSpecialCharactersVowels() {
         String input = "Hello World!";
-        TextAnalyzerResponseDTO result = analyzer.analyze(input, AnalyzerType.VOWELS);
+        TextAnalyzerResponseDTO result = analyzer.analyze(input, AnalyzerMode.VOWELS);
 
         Map<Character, Integer> vowels = result.getReport();
-        assertEquals(AnalyzerType.VOWELS, result.getAnalyzerType());
+        assertEquals(AnalyzerMode.VOWELS, result.getAnalyzerMode());
         assertEquals(input, result.getInputText());
         assertEquals(1, vowels.get('E'));
         assertEquals(2, vowels.get('O'));
@@ -97,10 +97,10 @@ public class LocalTextAnalyzerTest {
     @Test
     void testAnalyzeWithMixedSpecialCharactersConsonants() {
         String input = "Hello World";
-        TextAnalyzerResponseDTO result = analyzer.analyze(input, AnalyzerType.CONSONANTS);
+        TextAnalyzerResponseDTO result = analyzer.analyze(input, AnalyzerMode.CONSONANTS);
 
         Map<Character, Integer> consonants = result.getReport();
-        assertEquals(AnalyzerType.CONSONANTS, result.getAnalyzerType());
+        assertEquals(AnalyzerMode.CONSONANTS, result.getAnalyzerMode());
         assertEquals(input, result.getInputText());
         assertEquals(1, consonants.get('H'));
         assertEquals(3, consonants.get('L'));
@@ -114,9 +114,9 @@ public class LocalTextAnalyzerTest {
     @Test
     void testAnalyzeWithOnlySpecialCharactersVowels() {
         String input = "!%$§";
-        TextAnalyzerResponseDTO result = analyzer.analyze(input, AnalyzerType.VOWELS);
+        TextAnalyzerResponseDTO result = analyzer.analyze(input, AnalyzerMode.VOWELS);
 
-        assertEquals(AnalyzerType.VOWELS, result.getAnalyzerType());
+        assertEquals(AnalyzerMode.VOWELS, result.getAnalyzerMode());
         assertEquals(input, result.getInputText());
         assertTrue(result.getReport().isEmpty());
 
@@ -125,9 +125,9 @@ public class LocalTextAnalyzerTest {
     @Test
     void testAnalyzeWithOnlySpecialCharactersConsonants() {
         String input = "!%$§";
-        TextAnalyzerResponseDTO result = analyzer.analyze(input, AnalyzerType.CONSONANTS);
+        TextAnalyzerResponseDTO result = analyzer.analyze(input, AnalyzerMode.CONSONANTS);
 
-        assertEquals(AnalyzerType.CONSONANTS, result.getAnalyzerType());
+        assertEquals(AnalyzerMode.CONSONANTS, result.getAnalyzerMode());
         assertEquals(input, result.getInputText());
         assertTrue(result.getReport().isEmpty());
     }
@@ -135,9 +135,9 @@ public class LocalTextAnalyzerTest {
     @Test
     void testAnalyzeWithEmptyStringVowels() {
         String input = "";
-        TextAnalyzerResponseDTO result = analyzer.analyze(input, AnalyzerType.VOWELS);
+        TextAnalyzerResponseDTO result = analyzer.analyze(input, AnalyzerMode.VOWELS);
 
-        assertEquals(AnalyzerType.VOWELS, result.getAnalyzerType());
+        assertEquals(AnalyzerMode.VOWELS, result.getAnalyzerMode());
         assertEquals(input, result.getInputText());
         assertTrue(result.getReport().isEmpty());
     }
@@ -145,9 +145,9 @@ public class LocalTextAnalyzerTest {
     @Test
     void testAnalyzeWithEmptyStringConsonants() {
         String input = "";
-        TextAnalyzerResponseDTO result = analyzer.analyze(input, AnalyzerType.CONSONANTS);
+        TextAnalyzerResponseDTO result = analyzer.analyze(input, AnalyzerMode.CONSONANTS);
 
-        assertEquals(AnalyzerType.CONSONANTS, result.getAnalyzerType());
+        assertEquals(AnalyzerMode.CONSONANTS, result.getAnalyzerMode());
         assertEquals(input, result.getInputText());
         assertTrue(result.getReport().isEmpty());
     }
@@ -155,9 +155,9 @@ public class LocalTextAnalyzerTest {
     @Test
     void testAnalyzeWithWhiteSpaceStringVowels() {
         String input = "   ";
-        TextAnalyzerResponseDTO result = analyzer.analyze(input, AnalyzerType.VOWELS);
+        TextAnalyzerResponseDTO result = analyzer.analyze(input, AnalyzerMode.VOWELS);
 
-        assertEquals(AnalyzerType.VOWELS, result.getAnalyzerType());
+        assertEquals(AnalyzerMode.VOWELS, result.getAnalyzerMode());
         assertEquals(input, result.getInputText());
         assertTrue(result.getReport().isEmpty());
     }
@@ -165,9 +165,9 @@ public class LocalTextAnalyzerTest {
     @Test
     void testAnalyzeWithWhiteSpaceStringConsonants() {
         String input = "   ";
-        TextAnalyzerResponseDTO result = analyzer.analyze(input, AnalyzerType.CONSONANTS);
+        TextAnalyzerResponseDTO result = analyzer.analyze(input, AnalyzerMode.CONSONANTS);
 
-        assertEquals(AnalyzerType.CONSONANTS, result.getAnalyzerType());
+        assertEquals(AnalyzerMode.CONSONANTS, result.getAnalyzerMode());
         assertEquals(input, result.getInputText());
         assertTrue(result.getReport().isEmpty());
     }

@@ -3,16 +3,17 @@ package com.text_analyzer.backend.service;
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.stereotype.Component;
-import com.text_analyzer.backend.dto.AnalyzerType;
+
+import com.text_analyzer.backend.dto.AnalyzerMode;
 import com.text_analyzer.backend.dto.TextAnalyzerResponseDTO;
 
 @Component
 public class LocalTextAnalyzer {
-    public TextAnalyzerResponseDTO analyze(String input, AnalyzerType type) {
+    public TextAnalyzerResponseDTO analyze(String input, AnalyzerMode type) {
         switch (type) {
-            case AnalyzerType.VOWELS:
+            case AnalyzerMode.VOWELS:
                 return analyzeTextForVowels(input);
-            case AnalyzerType.CONSONANTS:
+            case AnalyzerMode.CONSONANTS:
                 return analyzeTextForConsonants(input);
             default:
                 return analyzeTextForVowels(input);
@@ -52,7 +53,7 @@ public class LocalTextAnalyzer {
                 'O', numO,
                 'U', numU);
 
-        TextAnalyzerResponseDTO responseDTO = new TextAnalyzerResponseDTO(input, AnalyzerType.VOWELS, vowelCount);
+        TextAnalyzerResponseDTO responseDTO = new TextAnalyzerResponseDTO(input, AnalyzerMode.VOWELS, vowelCount);
         return responseDTO;
 
     }
@@ -85,7 +86,7 @@ public class LocalTextAnalyzer {
             System.out.println("Letter '" + entrySet.getKey() + "' appears " + entrySet.getValue() + " times");
         });
 
-        TextAnalyzerResponseDTO responseDTO = new TextAnalyzerResponseDTO(input, AnalyzerType.CONSONANTS, consonants);
+        TextAnalyzerResponseDTO responseDTO = new TextAnalyzerResponseDTO(input, AnalyzerMode.CONSONANTS, consonants);
         return responseDTO;
     }
 
