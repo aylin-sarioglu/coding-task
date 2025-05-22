@@ -25,12 +25,14 @@ export class OfflineTextAnalyzer implements TextAnalyzer {
           inputText: request.inputText,
           analyzerMode: request.analyzerMode,
           report: this.analyzeTextForVowels(request.inputText),
+          isOffline: true
         } satisfies TextAnalyzerResponse;
       case 'CONSONANTS':
         return {
           inputText: request.inputText,
           analyzerMode: request.analyzerMode,
           report: this.analyzeTextForConsonants(request.inputText),
+          isOffline: true
         } satisfies TextAnalyzerResponse;
     }
   }

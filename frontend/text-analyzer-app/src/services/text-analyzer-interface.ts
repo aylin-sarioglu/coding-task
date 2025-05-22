@@ -6,11 +6,11 @@ export interface TextAnalyzerRequest {
   analyzerMode: AnalyzerMode;
 }
 
-export interface TextAnalyzerResponse {  
+export interface TextAnalyzerResponse {
   inputText: string;
   analyzerMode: AnalyzerMode;
   report: Map<string, number>;
-  
+  isOffline?: boolean;
 }
 
 export interface TextAnalyzer {

@@ -5,8 +5,8 @@
     <ng-container *ngFor="let result of results()">
       <mat-list-item>
         <span matListItemTitle class="list-item-title"
-          >Analyzed Text {{ result.inputText }} for
-          {{ result.analyzerMode }}</span
+          >Analyzed Text {{ result.inputText }} for {{ result.analyzerMode }} in
+          {{ result.isOffline ? "Offline" : "Online" }} Mode</span
         >
         <span matListItemLine *ngFor="let entry of result.report | keyvalue">
           Letter {{ entry.key }} appears {{ entry.value }} times
