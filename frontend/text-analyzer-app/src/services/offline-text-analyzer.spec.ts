@@ -20,7 +20,7 @@ fdescribe('OfflineTextAnalyzer', () => {
 
     const response: TextAnalyzerResponse = await service.analyze(request);
 
-    expect(response.inputText).toBe('Hello World');
+    expect(response.inputText).toBe('Hello World!');
     expect(response.analyzerMode).toBe('VOWELS');
     expect(response.isOffline).toBeTrue();
 
