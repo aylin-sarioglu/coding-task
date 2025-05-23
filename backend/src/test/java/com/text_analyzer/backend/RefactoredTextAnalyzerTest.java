@@ -71,7 +71,7 @@ public class RefactoredTextAnalyzerTest {
         assertEquals(0, result.get('A'));
         assertEquals(0, result.get('I'));
         assertEquals(0, result.get('U'));
-        assertTrue(!result.containsKey('!'));
+        assertFalse(result.containsKey('!'));
 
     }
 
@@ -85,7 +85,7 @@ public class RefactoredTextAnalyzerTest {
         assertEquals(1, result.get('W'));
         assertEquals(1, result.get('R'));
         assertEquals(1, result.get('D'));
-        assertTrue(!result.containsKey('!'));
+        assertFalse(result.containsKey('!'));
 
     }
 

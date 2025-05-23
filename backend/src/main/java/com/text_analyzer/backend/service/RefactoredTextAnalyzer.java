@@ -22,6 +22,18 @@ public class RefactoredTextAnalyzer {
 
     private final Map<Character, Integer> EMPTY_ANALYSIS_RESPONSE = new LinkedHashMap<>();
 
+    /**
+     * Analyzes the given input text based on the specified {@link AnalyzerMode}.
+     * Depending on the mode, the method performs either a vowel or consonant
+     * analysis.
+     * Returns a map containing each character and its corresponding frequency.
+     * 
+     * @param input the text to be analyzed
+     * @param type  the analysis mode, specifying whether to analyze for vowels or
+     *              consonants
+     * @return a map with characters as keys and their frequencies as values,
+     *         or an empty analysis response if the mode is not supported
+     */
     public Map<Character, Integer> analyze(String input, AnalyzerMode type) {
         switch (type) {
             case AnalyzerMode.VOWELS:

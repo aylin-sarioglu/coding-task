@@ -14,6 +14,20 @@ public class TextAnalyzerService {
         this.localTextAnalyzer = localTextAnalyzer;
     }
 
+    /**
+     * Performs a text analysis on the given input using the specified
+     * {@link AnalyzerMode}.
+     * Delegates the analysis task to the refactored text analyzer and wraps the
+     * result
+     * in a {@link TextAnalyzerResponseDTO} object containing the original input,
+     * the analysis mode, and the character frequency report.
+     *
+     * @param inputText    the text to be analyzed
+     * @param analyzerMode the mode indicating whether to analyze for vowels or
+     *                     consonants
+     * @return a {@link TextAnalyzerResponseDTO} containing the input text, selected
+     *         mode, and the resulting character frequency map
+     */
     public TextAnalyzerResponseDTO analyzeText(String inputText, AnalyzerMode analyzerMode) {
         Map<Character, Integer> analyzerReport = localTextAnalyzer.analyze(inputText, analyzerMode);
 
