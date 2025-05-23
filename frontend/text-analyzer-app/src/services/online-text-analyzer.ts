@@ -4,7 +4,7 @@ import {
   TextAnalyzerRequest,
   TextAnalyzerResponse,
 } from './text-analyzer';
-import { lastValueFrom, take } from 'rxjs';
+import { catchError, lastValueFrom, take, throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environments';
 
@@ -29,7 +29,19 @@ export class OnlineTextAnalyzer implements TextAnalyzer {
     // for easiness
     const request$ = this.http
       .post<TextAnalyzerResponse>(this.apiUrl, data)
-      .pipe(take(1));
+      .pipe(
+        take(1),
+        catchError((error) => {
+          console.error('Delivery problem:', error);
+
+          return throwError(() =>
+            alert(
+              error.name +
+                ': Please try again later or use offline analyze mode.'
+            )
+          );
+        })
+      );
     return lastValueFrom(request$);
   }
 }
