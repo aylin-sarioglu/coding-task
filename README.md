@@ -104,7 +104,7 @@ Runs on: `http://localhost:4200`
 ---
 
 ## 🧪 Running Tests
-### Backend
+### Frontend
 ```bash
 cd frontend/text-analyzer-app
 ./ng test (--no-watch)
