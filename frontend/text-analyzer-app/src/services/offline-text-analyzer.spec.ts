@@ -1,6 +1,9 @@
 import { OfflineTextAnalyzer } from './offline-text-analyzer';
 import { TextAnalyzerRequest, TextAnalyzerResponse } from './text-analyzer';
 
+/**  Example tests: 'force' is only used to allow execution with 'ng test' without errors,
+since the other test files are not yet implemented.*/
+
 fdescribe('OfflineTextAnalyzer', () => {
   let service: OfflineTextAnalyzer;
 

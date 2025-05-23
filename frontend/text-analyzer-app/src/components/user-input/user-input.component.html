@@ -17,10 +17,10 @@
       </mat-form-field>
 
       <div class="user-input-button-row">
-        <!-- Toggle Group for Selection of the Analyzer Type-->
+        <!-- Toggle Group for Selection of the Analyzer Mode-->
         <mat-button-toggle-group
-          name="analyzerType"
-          aria-label="Analyzer Type"
+          name="analyzerMode"
+          aria-label="Analyzer Mode"
           [hideSingleSelectionIndicator]="hideSingleSelectionIndicator()"
           (change)="onSelectionChange($event)"
         >
@@ -28,7 +28,7 @@
           <mat-button-toggle value="CONSONANTS">Consonants</mat-button-toggle>
         </mat-button-toggle-group>
 
-        <!-- Slide Toggle for Online/Offline Mode / Analyzer Mode -->
+        <!-- Slide Toggle for Online/Offline Mode -->
         <mat-slide-toggle
           [(ngModel)]="isOnline"
           name="onlineStatus"

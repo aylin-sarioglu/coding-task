@@ -16,6 +16,11 @@ export class OfflineTextAnalyzer implements TextAnalyzer {
   }
 
   private readonly VOWEL_SET: Set<string> = new Set(['A', 'E', 'I', 'O', 'U']);
+  private readonly EMPTY_ANALYSIS_RESPONSE: TextAnalyzerResponse = {
+    inputText: '',
+    analyzerMode: 'VOWELS',
+    report: new Map(),
+  };
 
   public analyzeText(request: TextAnalyzerRequest): TextAnalyzerResponse {
     switch (request.analyzerMode) {
@@ -33,6 +38,10 @@ export class OfflineTextAnalyzer implements TextAnalyzer {
           report: this.analyzeTextForConsonants(request.inputText),
           isOffline: true,
         } satisfies TextAnalyzerResponse;
+      default:
+        // optional defensive case
+        console.error('Unknown analyzer mode');
+        return this.EMPTY_ANALYSIS_RESPONSE;
     }
   }
 
