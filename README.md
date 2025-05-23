@@ -145,6 +145,6 @@ frontend/
 
 ## 📌 Note
 
-In **online mode**, the frontend sends the input to the backend via REST. There the analysis happens through the refactored logic in `LocalTextAnalyzer.java` provided by the `TextAnalyzer.java`.  
+In **online mode**, the frontend sends the input to the backend via REST. There the analysis happens through the refactored logic in `RefactoredTextAnalyzer.java` provided by the `TextAnalyzer.java`.  
 In **offline mode**, analysis happens directly on the frontend using a local TypeScript copy of the logic from `TextAnalyzer.java`.
 
