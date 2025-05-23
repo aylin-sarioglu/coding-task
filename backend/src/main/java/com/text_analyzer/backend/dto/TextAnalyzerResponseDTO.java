@@ -2,9 +2,24 @@ package com.text_analyzer.backend.dto;
 
 import java.util.Map;
 
+/**
+ * DTO for results of the text analysis.
+ */
 public class TextAnalyzerResponseDTO {
+    /**
+     * The input text that is analyzed.
+     */
     private String inputText;
+
+    /**
+     * The mode of the given analysis, which can either be VOWELS or CONSONANTS.
+     */
     private AnalyzerMode analyzerMode;
+
+    /**
+     * The results of the analyis, providing the letter and how many times it
+     * occurs in the given input text.
+     */
     private Map<Character, Integer> report;
 
     public TextAnalyzerResponseDTO(String inputText, AnalyzerMode analyzerMode, Map<Character, Integer> report) {

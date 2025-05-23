@@ -5,14 +5,14 @@ import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import com.text_analyzer.backend.dto.AnalyzerMode;
-import com.text_analyzer.backend.service.LocalTextAnalyzer;
+import com.text_analyzer.backend.service.RefactoredTextAnalyzer;
 
-public class LocalTextAnalyzerTest {
-    private LocalTextAnalyzer analyzer;
+public class RefactoredTextAnalyzerTest {
+    private RefactoredTextAnalyzer analyzer;
 
     @BeforeEach
     void setUp() {
-        analyzer = new LocalTextAnalyzer();
+        analyzer = new RefactoredTextAnalyzer();
     }
 
     @Test

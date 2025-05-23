@@ -2,16 +2,15 @@ package com.text_analyzer.backend.service;
 
 import java.util.Map;
 import org.springframework.stereotype.Service;
-
 import com.text_analyzer.backend.dto.AnalyzerMode;
 import com.text_analyzer.backend.dto.TextAnalyzerResponseDTO;
 
 @Service
 public class TextAnalyzerService {
 
-    private final LocalTextAnalyzer localTextAnalyzer;
+    private final RefactoredTextAnalyzer localTextAnalyzer;
 
-    public TextAnalyzerService(LocalTextAnalyzer localTextAnalyzer) {
+    public TextAnalyzerService(RefactoredTextAnalyzer localTextAnalyzer) {
         this.localTextAnalyzer = localTextAnalyzer;
     }
 

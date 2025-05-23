@@ -3,10 +3,20 @@ package com.text_analyzer.backend.dto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+/**
+ * DTO for requesting a text analysis.
+ */
+
 public class TextAnalyzerRequestDTO {
+    /**
+     * The input text that should be analyzed. Must be not be empty.
+     */
     @NotBlank
     private String inputText;
 
+    /**
+     * The mode of the given analysis, which can either be VOWELS or CONSONANTS.
+     */
     @NotNull
     private AnalyzerMode analyzerMode;
 

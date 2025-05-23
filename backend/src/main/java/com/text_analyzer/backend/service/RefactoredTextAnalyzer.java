@@ -8,8 +8,13 @@ import java.util.Set;
 import org.springframework.stereotype.Component;
 import com.text_analyzer.backend.dto.AnalyzerMode;
 
+/**
+ * The program for calculating how many times letter in given sentence appears.
+ * It gives numbers either for vowels or for consonants based on program input.
+ */
+
 @Component
-public class LocalTextAnalyzer {
+public class RefactoredTextAnalyzer {
     private final Set<Character> VOWEL_SET = new LinkedHashSet<>(Arrays.asList('A', 'E', 'I', 'O', 'U'));
 
     public Map<Character, Integer> analyze(String input, AnalyzerMode type) {
