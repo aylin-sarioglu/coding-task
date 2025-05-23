@@ -45,42 +45,47 @@ export class OfflineTextAnalyzer implements TextAnalyzer {
     }
   }
 
-  private analyzeTextForVowels(input: string): Map<string, number> {
+  private initializeCountMap(chars: Set<string>): Map<string, number> {
+    const countMap = new Map<string, number>();
+    for (const char of chars) {
+      countMap.set(char, 0);
+    }
+    return countMap;
+  }
+
+  private countCharacters(
+    input: string,
+    filterFn: (char: string) => boolean,
+    prefillMap?: Set<string>
+  ): Map<string, number> {
     if (!input || input.trim() === '') {
       return new Map();
     }
 
-    const vowelsCountMap = new Map<string, number>();
-
-    for (const vowel of this.VOWEL_SET) {
-      vowelsCountMap.set(vowel, 0);
-    }
+    const countMap = prefillMap
+      ? this.initializeCountMap(prefillMap)
+      : new Map<string, number>();
 
     for (const char of input.toUpperCase()) {
-      if (this.isVowel(char)) {
-        vowelsCountMap.set(char, (vowelsCountMap.get(char) || 0) + 1);
+      if (filterFn(char)) {
+        countMap.set(char, (countMap.get(char) || 0) + 1);
       }
     }
 
-    return vowelsCountMap;
+    return countMap;
+  }
+
+  private analyzeTextForVowels(input: string): Map<string, number> {
+    return this.countCharacters(input, this.isVowel.bind(this), this.VOWEL_SET);
   }
 
   private analyzeTextForConsonants(input: string): Map<string, number> {
     const LETTER_EXPRESSION: RegExp = /[A-Z]/;
 
-    if (!input || input.trim() === '') {
-      return new Map();
-    }
-
-    const consonantsCountMap = new Map<string, number>();
-
-    for (const char of input.toUpperCase()) {
-      if (!this.isVowel(char) && LETTER_EXPRESSION.test(char)) {
-        consonantsCountMap.set(char, (consonantsCountMap.get(char) || 0) + 1);
-      }
-    }
-
-    return consonantsCountMap;
+    return this.countCharacters(
+      input,
+      (char) => !this.isVowel(char) && LETTER_EXPRESSION.test(char)
+    );
   }
 
   private isVowel(char: string): boolean {
