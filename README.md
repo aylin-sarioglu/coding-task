@@ -41,7 +41,7 @@ A simple application that analyzes text input for vowels and consonants. The app
 
 ```bash
 cd backend
-./mvnw spring-boot:run
+./mvn spring-boot:run
 ```
 
 Runs on: `http://localhost:8080`
