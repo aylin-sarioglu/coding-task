@@ -22,6 +22,17 @@ export class OfflineTextAnalyzer implements TextAnalyzer {
     report: new Map(),
   };
 
+  /**
+   * Analyzes the given text based on the specified analyzer mode (either 'VOWELS' or 'CONSONANTS').
+   *
+   * This method processes the input text locally and generates a character frequency report
+   * depending on the selected mode. The result includes the input, mode, report, and an
+   * indicator that the analysis was performed offline.
+   *
+   * @param request An object containing the input text and the desired analyzer mode.
+   * @returns A {@link TextAnalyzerResponse} object containing the analysis results.
+   *          If the mode is unrecognized, a predefined empty response is returned.
+   */
   public analyzeText(request: TextAnalyzerRequest): TextAnalyzerResponse {
     switch (request.analyzerMode) {
       case 'VOWELS':

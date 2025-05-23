@@ -4,7 +4,7 @@ import {
   TextAnalyzerRequest,
   TextAnalyzerResponse,
 } from './text-analyzer';
-import { BehaviorSubject, lastValueFrom, take } from 'rxjs';
+import { lastValueFrom, take } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environments';
 
@@ -16,6 +16,15 @@ export class OnlineTextAnalyzer implements TextAnalyzer {
 
   constructor(private readonly http: HttpClient) {}
 
+  /**
+   * Sends a text analysis request to the backend API.
+   *
+   * This method posts the provided {@link TextAnalyzerRequest} to the configured API endpoint
+   * and returns a promise that resolves to a {@link TextAnalyzerResponse}.
+   *
+   * @param data The request payload containing the text and the selected analysis mode.
+   * @returns A promise resolving to the text analysis response from the API.
+   */
   analyze(data: TextAnalyzerRequest): Promise<TextAnalyzerResponse> {
     // for easiness
     const request$ = this.http
