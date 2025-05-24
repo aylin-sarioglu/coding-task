@@ -11,13 +11,13 @@ public class TextAnalyzerRequestDTO {
     /**
      * The input text that should be analyzed. Must be not be empty.
      */
-    @NotBlank
+    @NotBlank(message = "Input text must not be blank")
     private String inputText;
 
     /**
      * The mode of the given analysis, which can either be VOWELS or CONSONANTS.
      */
-    @NotNull
+    @NotNull(message = "Analyzer mode is required")
     private AnalyzerMode analyzerMode;
 
     public TextAnalyzerRequestDTO(@NotBlank String inputText, @NotNull AnalyzerMode analyzerMode) {

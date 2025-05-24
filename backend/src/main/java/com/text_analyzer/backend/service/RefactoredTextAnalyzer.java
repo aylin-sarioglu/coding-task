@@ -74,7 +74,7 @@ public class RefactoredTextAnalyzer {
         return countMap;
     }
 
-    private Map<Character, Integer> countCharactersWithout(String input,
+    private Map<Character, Integer> countCharacters(String input,
             Predicate<Character> filterFn) {
         return countCharacters(input, filterFn, null);
 
@@ -87,7 +87,7 @@ public class RefactoredTextAnalyzer {
 
     private Map<Character, Integer> analyzeTextForConsonants(String input) {
         Predicate<Character> isConsonant = ch -> !isVowel(ch) && Character.isLetter(ch);
-        return countCharactersWithout(input, isConsonant);
+        return countCharacters(input, isConsonant);
 
     }
 
